@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
+import bg_flowers from "@assets/IMG_20260516_195445_338_1778928887521.jpg";
 import photo_baby from "@assets/IMG_20260516_153315_171_1778917565212.jpg";
 import photo_night_city from "@assets/IMG_20260516_141134_943_1778917572312.jpg";
 import photo_sunset_car from "@assets/IMG_20260516_141135_224_1778917579597.jpg";
@@ -263,11 +264,27 @@ function ScrollFade({ children, className = "" }: { children: React.ReactNode; c
 
 export default function GiftWebsite() {
   return (
-    <div className="min-h-screen overflow-x-hidden font-serif relative" style={{ background: "#f7f1ee", color: "#5f4b4b" }}>
+    <div className="min-h-screen overflow-x-hidden font-serif relative" style={{ color: "#5f4b4b" }}>
+
+      {/* Fixed floral background */}
+      <div
+        className="fixed inset-0 -z-20 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bg_flowers})` }}
+      />
+      {/* Soft pink cream overlay */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(circle at top left, rgba(255,240,245,0.45), transparent 40%),
+            radial-gradient(circle at bottom right, rgba(255,210,225,0.30), transparent 45%),
+            linear-gradient(rgba(255,248,245,0.72), rgba(255,235,228,0.72))
+          `,
+        }}
+      />
 
       {/* 1. HERO */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #f9ede8 0%, #f0e4dc 50%, #ecddd4 100%)" }} />
         <div className="relative z-10 max-w-3xl">
           <ScrollFade>
             <p className="tracking-[0.4em] uppercase text-sm mb-6 opacity-60">for you ❣️</p>
