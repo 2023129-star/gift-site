@@ -1,0 +1,727 @@
+export default function GiftWebsite() {
+  const people = [
+  {
+    name: "От Айданы",
+    letter:
+      "Ваше письмо здесь ❣️",
+  },
+
+  {
+    name: "От Аяны",
+    letter:
+      "Ваше письмо здесь ❣️",
+  },
+
+  {
+    name: "От Аюши",
+    letter:
+      "Ваше письмо здесь ❣️",
+  },
+
+  {
+    name: "От Ай-Чырыы",
+    letter:
+      "Ваше письмо здесь ❣️",
+  },
+];
+
+  const songs = [
+    "Ай-Кыс_Кыргыс_-_Чассынамга_(cover)_1778919276111.mp3",
+    "bellyache_-_Billie_Eilish_1778919285658.mp3",
+    "ocean_eyes_-_Billie_Eilish_1778919292878.mp3",
+    "Song title — Artist",
+  ];
+
+  const loveList = [
+    "Твой смех",
+    "Твои голосовые",
+    "Как ты поддерживаешь людей",
+    "Твои случайные шутки",
+    "Как с тобой спокойно",
+    "Твои истории",
+    "Твоя доброта",
+    "Твои фотографии",
+    "Твоё чувство юмора",
+    "То, как ты делаешь жизнь теплее",
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#f7f1ee] text-[#5f4b4b] overflow-x-hidden font-serif relative">
+
+      {/* BACKGROUND */}
+      <div
+        className="fixed inset-0 bg-cover bg-center scale-105 blur-md opacity-70 -z-20"
+        style={{
+          backgroundImage: "url('/photos/cozy-background.jpg')",
+        }}
+      />
+
+      <div className="fixed inset-0 bg-black/10 -z-10" />
+
+
+      {/* HERO */}
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-[2px]" />
+
+        <div className="relative z-10 max-w-3xl">
+          <p className="tracking-[0.4em] uppercase text-sm mb-6 opacity-70">
+            for you ❣️
+          </p>
+
+          <h1 className="text-5xl md:text-7xl leading-tight font-light mb-8">
+            A little place
+            <br />
+            made from love
+          </h1>
+
+          <p className="text-lg md:text-xl leading-8 opacity-80 max-w-2xl mx-auto">
+            Здесь собраны воспоминания, музыка, фотографии и слова,
+            которые мы хотели оставить для тебя.
+          </p>
+
+          <div className="mt-12 animate-bounce text-2xl">↓</div>
+        </div>
+      </section>
+
+
+      {/* MUSIC PLAYER */}
+      <section className="py-28 px-6 max-w-5xl mx-auto">
+        <div className="bg-white/60 backdrop-blur-md rounded-[40px] p-10 shadow-xl border border-white/40">
+          <h2 className="text-4xl mb-6 text-center font-light">
+            music while scrolling
+          </h2>
+
+          <p className="text-center mb-8 opacity-70">
+            Включай музыку и листай дальше ❣️
+          </p>
+
+          <div className="bg-[#fdf9f7] rounded-3xl p-6 border border-[#e8d9d4]">
+            <audio controls className="w-full">
+              <source
+                src="/music/DEMChIK_-_Ынакшылым_оду_ошпес_(1)_1778912592122.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </div>
+
+          <p className="text-sm text-center mt-5 opacity-60">
+            Любим💋
+          </p>
+        </div>
+      </section>
+
+
+      {/* BIRTHDAY INTRO */}
+      <section className="py-36 px-6 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
+
+          <div className="relative">
+            <div className="absolute -inset-4 bg-white/20 blur-2xl rounded-full" />
+
+            <div className="relative rotate-[-4deg] bg-white/90 p-4 rounded-[35px] shadow-2xl backdrop-blur-md">
+              <img
+                src="/IMG_20260516_153315_171_1778917565212.jpg"
+                className="w-[320px] h-[420px] object-cover rounded-[25px]"
+              />
+
+              <p className="text-center mt-5 text-sm tracking-[0.3em] uppercase opacity-50">
+                little saglash ❣️
+              </p>
+            </div>
+          </div>
+
+          <div className="max-w-2xl text-center md:text-left">
+            <p className="tracking-[0.4em] uppercase text-sm opacity-50 mb-6">
+              happy birthday
+            </p>
+
+            <h1 className="text-6xl md:text-8xl leading-none font-light mb-10">
+              Saglash's
+              <br />
+              22nd birthday
+            </h1>
+
+            <p className="text-xl leading-10 opacity-75 font-light">
+              22 —
+              возраст красивых воспоминаний,
+              ночных разговоров,
+              спонтанных моментов,
+              любимых людей
+              и истории ❣️
+            </p>
+
+            <div className="mt-10 text-lg opacity-60 italic">
+              16.05 ✨
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* ASSOCIATIONS */}
+      <section className="py-32 px-6 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="text-center mb-24">
+            <p className="tracking-[0.4em] uppercase text-sm opacity-50 mb-6">
+              associations
+            </p>
+
+            <h2 className="text-5xl md:text-7xl font-light leading-tight">
+              things that
+              <br />
+              feel like you ❣️
+            </h2>
+          </div>
+
+          <div className="space-y-32">
+
+            <div className="grid md:grid-cols-2 gap-14 items-center">
+
+              <div className="relative">
+                <div className="absolute -inset-6 bg-white/10 blur-3xl rounded-full" />
+
+                <div className="relative rotate-[-4deg] bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl">
+                  <img
+                    src="/IMG_20260516_141134_943_1778917572312.jpg"
+                    className="w-full h-[500px] object-cover rounded-[25px]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">
+                  01
+                </p>
+
+                <h3 className="text-5xl font-light mb-8">
+                  ночной город
+                </h3>
+
+                <p className="text-lg leading-10 opacity-75 font-light">
+                  потому что рядом с тобой
+                  даже обычные вечера
+                  ощущаются как сцены из фильма ❣️
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-14 items-center">
+
+              <div className="order-2 md:order-1">
+                <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">
+                  02
+                </p>
+
+                <h3 className="text-5xl font-light mb-8">
+                  закаты
+                </h3>
+
+                <p className="text-lg leading-10 opacity-75 font-light">
+                  потому что в тебе
+                  есть что-то очень тёплое,
+                  спокойное
+                  и красивое ❣️
+                </p>
+              </div>
+
+              <div className="relative order-1 md:order-2">
+                <div className="absolute -inset-6 bg-white/10 blur-3xl rounded-full" />
+
+                <div className="relative rotate-[4deg] bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl">
+                  <img
+                    src="/IMG_20260516_141135_224_1778917579597.jpg"
+                    className="w-full h-[500px] object-cover rounded-[25px]"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-14 items-center">
+
+              <div className="relative">
+                <div className="absolute -inset-6 bg-white/10 blur-3xl rounded-full" />
+
+                <div className="relative rotate-[-3deg] bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl">
+                  <img
+                    src="/IMG_20260516_141134_926_1778917586106.jpg"
+                    className="w-full h-[500px] object-cover rounded-[25px]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">
+                  03
+                </p>
+
+                <h3 className="text-5xl font-light mb-8">
+                  море
+                </h3>
+
+                <p className="text-lg leading-10 opacity-75 font-light">
+                  потому что с тобой
+                  одновременно спокойно
+                  и очень живо ❣️
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section> 
+{/* SECRET PHOTO ARCHIVE */}
+<section className="py-28 px-6">
+  <div className="max-w-6xl mx-auto">
+    <div className="bg-white/40 backdrop-blur-xl rounded-[50px] p-12 md:p-16 shadow-2xl border border-white/30 text-center relative overflow-hidden">
+
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top,white,transparent_60%)]" />
+
+      <p className="tracking-[0.35em] uppercase text-sm opacity-50 mb-5 relative z-10">
+        hidden memories
+      </p>
+
+      <h2 className="text-5xl md:text-6xl font-light mb-16 relative z-10 leading-tight">
+        open the
+        <br />
+        photo archive ❣️
+      </h2>
+
+      {/* PHOTOS */}
+      <div className="columns-2 md:columns-4 gap-5 space-y-5 relative z-10">
+
+        <img
+          src="/photos/2Qe7lCIuxrb95mZVDywdaRNArqcaBk7u4gcFenjvYBtissrDAGjgQjetJ23O5p_1778913996697.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_154832_044_1778914122136.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_154831_460_1778914129808.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/P_HGSMSfEN0hyoakRRwp-RW9cFTtzVYsOub61C8t8W-8ww4Uv-hSfWSt4tYnfy_1778914012121.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/7OpNE_CzanmGM1E9D0wEX--FZwIrQPOi57O4kCKuSZI6KKJlQLYaLjVFi-ZzG0_1778914029051.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/AyqAGVGNgElHsWuJtsMhtE4dMH50yMnDiMzOP6cvV58BizqwkDlB4g7dkIFfuz_1778914048157.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/jCgQu8o4mscSzuvFHRtdXjozXXRY_m8HppSawpSAuxjDugc4P-KOzZpRgpjDvS_1778914055732.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_154831_274_1778914118449.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_155656_098_1778914641053.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_155656_084_1778914644206.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_155736_871_1778914662116.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+        <img
+          src="/photos/IMG_20260516_155737_481_1778914667435.jpg"
+          className="rounded-[28px] shadow-xl hover:scale-[1.02] transition duration-500 w-full"
+        />
+
+      </div>
+
+      <p className="mt-14 text-sm opacity-45 relative z-10 tracking-wide">
+        a collection of moments we never want to forget ❣️
+      </p>
+
+    </div>
+  </div>
+</section> 
+
+      {/* SONGS */}
+      <section className="py-28 px-6">
+        <div className="max-w-5xl mx-auto bg-white/60 backdrop-blur-md rounded-[45px] p-12 shadow-xl border border-white/50">
+
+          <div className="text-center mb-14">
+            <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">
+              soundtrack
+            </p>
+
+            <h2 className="text-5xl md:text-6xl font-light leading-tight">
+              songs that
+              <br />
+              feel like you ❣️
+            </h2>
+          </div>
+
+          <div className="space-y-5">
+
+            <div className="flex items-center justify-between rounded-3xl px-7 py-5 bg-[#fffaf8] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
+              <div>
+                <p className="text-lg opacity-40 mb-1">01</p>
+                <p className="text-xl">Song title — Artist</p>
+              </div>
+
+              <div className="text-2xl opacity-50">♫</div>
+            </div>
+
+            <div className="flex items-center justify-between rounded-3xl px-7 py-5 bg-[#fffaf8] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
+              <div>
+                <p className="text-lg opacity-40 mb-1">02</p>
+                <p className="text-xl">Song title — Artist</p>
+              </div>
+
+              <div className="text-2xl opacity-50">♫</div>
+            </div>
+
+            <div className="flex items-center justify-between rounded-3xl px-7 py-5 bg-[#fffaf8] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
+              <div>
+                <p className="text-lg opacity-40 mb-1">03</p>
+                <p className="text-xl">Song title — Artist</p>
+              </div>
+
+              <div className="text-2xl opacity-50">♫</div>
+            </div>
+
+            <div className="flex items-center justify-between rounded-3xl px-7 py-5 bg-[#fffaf8] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
+              <div>
+                <p className="text-lg opacity-40 mb-1">04</p>
+                <p className="text-xl">Song title — Artist</p>
+              </div>
+
+              <div className="text-2xl opacity-50">♫</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* 10 THINGS */}
+      <section className="py-28 px-6">
+        <div className="max-w-6xl mx-auto">
+
+          <div className="text-center mb-20">
+            <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">
+              little things
+            </p>
+
+            <h2 className="text-5xl md:text-6xl font-light leading-tight">
+              10 things
+              <br />
+              we love about you ❣️
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            {loveList.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/60 backdrop-blur-md rounded-[30px] p-8 shadow-lg border border-white/40 flex gap-6 items-center hover:scale-[1.02] transition duration-500"
+              >
+
+                <div className="text-4xl opacity-40">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+
+                <p className="text-xl">{item}</p>
+
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* LETTERS */}
+<section className="py-32 px-6 relative">
+  <div className="max-w-6xl mx-auto">
+
+    <div className="text-center mb-24">
+      <p className="tracking-[0.3em] uppercase text-sm opacity-60 mb-5">
+        the most important part
+      </p>
+
+      <h2 className="text-5xl md:text-6xl font-light leading-tight">
+        letters for you ❣️
+      </h2>
+    </div>
+
+    <div className="space-y-32">
+
+      {/* PERSON 1 */}
+      <div className="grid md:grid-cols-2 gap-16 items-center">
+
+        <div className="relative">
+
+          <div className="absolute -inset-5 bg-white/10 blur-3xl rounded-full" />
+
+          <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[40px] shadow-2xl rotate-[-4deg]">
+
+            <img
+              src="/photos/letter-1.jpg"
+              className="w-full h-[520px] object-cover rounded-[30px]"
+            />
+
+          </div>
+        </div>
+
+        <div className="bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+
+          <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">
+            От Айданы
+          </p>
+
+          <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
+
+            ВАШЕ ПИСЬМО ЗДЕСЬ ❣️
+
+          </div>
+
+        </div>
+      </div>
+
+
+      {/* PERSON 2 */}
+      <div className="grid md:grid-cols-2 gap-16 items-center">
+
+        <div className="relative">
+
+          <div className="absolute -inset-5 bg-white/10 blur-3xl rounded-full" />
+
+          <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[40px] shadow-2xl rotate-[4deg]">
+
+            <img
+              src="/photos/letter-2.jpg"
+              className="w-full h-[520px] object-cover rounded-[30px]"
+            />
+
+          </div>
+        </div>
+
+        <div className="bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+
+          <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">
+            От ...
+          </p>
+
+          <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
+
+            ВАШЕ ПИСЬМО ЗДЕСЬ ❣️
+
+          </div>
+
+        </div>
+      </div>
+
+
+      {/* PERSON 3 */}
+      <div className="grid md:grid-cols-2 gap-16 items-center">
+
+        <div className="relative">
+
+          <div className="absolute -inset-5 bg-white/10 blur-3xl rounded-full" />
+
+          <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[40px] shadow-2xl rotate-[-4deg]">
+
+            <img
+              src="/photos/letter-3.jpg"
+              className="w-full h-[520px] object-cover rounded-[30px]"
+            />
+
+          </div>
+        </div>
+
+        <div className="bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+
+          <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">
+            От ...
+          </p>
+
+          <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
+
+            ВАШЕ ПИСЬМО ЗДЕСЬ ❣️
+
+          </div>
+
+        </div>
+      </div>
+
+
+      {/* PERSON 4 */}
+      <div className="grid md:grid-cols-2 gap-16 items-center">
+
+        <div className="relative">
+
+          <div className="absolute -inset-5 bg-white/10 blur-3xl rounded-full" />
+
+          <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[40px] shadow-2xl rotate-[4deg]">
+
+            <img
+              src="/photos/letter-4.jpg"
+              className="w-full h-[520px] object-cover rounded-[30px]"
+            />
+
+          </div>
+        </div>
+
+        <div className="bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+
+          <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">
+            От ...
+          </p>
+
+          <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
+
+            ВАШЕ ПИСЬМО ЗДЕСЬ ❣️
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+IMG_20260516_122207_125.jpg
+Вот это фото фоном красивым чтобы при этом не было так что оно очень выделяется. Очень комфортно все смотрелось чтобы
+
+      {/* LETTERS */}
+      <section className="py-32 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-24">
+            <p className="tracking-[0.3em] uppercase text-sm opacity-60 mb-5">
+              the most important part
+            </p>
+
+            <h2 className="text-5xl md:text-6xl font-light leading-tight">
+              letters for you ❣️
+            </h2>
+          </div>
+
+          <div className="space-y-32">
+            {people.map((person, index) => (
+              <div key={index}>
+
+                {/* PHOTOS */}
+                <div className="relative h-[500px] mb-16">
+
+                  <div className="absolute top-0 left-[8%] rotate-[-8deg] w-60 h-80 bg-white p-3 shadow-2xl rounded-2xl">
+                    <img
+                      src={`/photos/letter-${index + 1}-1.jpg`}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+
+                  <div className="absolute top-24 left-[38%] rotate-[5deg] w-64 h-96 bg-white p-3 shadow-2xl rounded-2xl z-10">
+                    <img
+                      src={`/photos/letter-${index + 1}-2.jpg`}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+
+                  <div className="absolute top-10 right-[8%] rotate-[10deg] w-60 h-80 bg-white p-3 shadow-2xl rounded-2xl">
+                    <img
+                      src={`/photos/letter-${index + 1}-3.jpg`}
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                  </div>
+                </div>
+
+                {/* LETTER */}
+                <div className="max-w-4xl mx-auto bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+                  <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">
+                    {person.name}
+                  </p>
+
+                  <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
+                    {person.letter}
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FINAL */}
+      <section className="py-40 px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-sm" />
+
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <p className="tracking-[0.4em] uppercase text-sm opacity-60 mb-8">
+            thank you
+          </p>
+
+          <h2 className="text-5xl md:text-7xl font-light leading-tight mb-12">
+            thank you
+            <br />
+            for existing
+          </h2>
+
+          <p className="text-xl leading-10 opacity-80 mb-16">
+            Спасибо тебе за твоё тепло,
+            поддержку,
+            смех
+            и все моменты,
+            которые стали особенными благодаря тебе ❣️
+
+            <br />
+            <br />
+
+            Мы очень надеемся,
+            что впереди нас ждёт
+            ещё огромное количество
+            воспоминаний вместе.
+          </p>
+
+          <div className="space-y-5 text-lg opacity-80">
+            <p>пусть ты всегда будешь счастлива ❣️</p>
+
+            <p>
+              пусть рядом всегда будут люди,
+              рядом с которыми спокойно
+            </p>
+
+            <p>
+              пусть жизнь будет красивой,
+              тёплой
+              и наполненной любовью
+            </p>
+          </div>
+
+          <div className="mt-24 text-3xl md:text-5xl tracking-wide font-light">
+            ЫНАК БИС❣️
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}

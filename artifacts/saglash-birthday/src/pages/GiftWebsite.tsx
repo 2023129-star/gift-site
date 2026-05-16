@@ -31,22 +31,22 @@ const people = [
   {
     name: "От Айданы",
     letter: "Ваше письмо здесь ❣️",
-    photos: [photo_cafe, photo_basketball, photo_night_group],
+    photo: photo_cafe,
   },
   {
     name: "От Аяны",
     letter: "Ваше письмо здесь ❣️",
-    photos: [photo_camping, photo_horse, photo_cafe_night],
+    photo: photo_night_group,
   },
   {
     name: "От Аюши",
     letter: "Ваше письмо здесь ❣️",
-    photos: [photo_dinner, photo_korean_food, photo_night_selfie],
+    photo: photo_korean_food,
   },
   {
     name: "От Ай-Чырыы",
     letter: "Ваше письмо здесь ❣️",
-    photos: [photo_winter, photo_mountains_car, photo_car_wind],
+    photo: photo_winter,
   },
 ];
 
@@ -61,6 +61,13 @@ const loveList = [
   "Твои фотографии",
   "Твоё чувство юмора",
   "То, как ты делаешь жизнь теплее",
+];
+
+const associatedSongs = [
+  { num: "01", title: "Ынакшылым оду ошпес", artist: "DEMChIK", note: "потому что это звучит как что-то вечное ❣️" },
+  { num: "02", title: "Чассынамга (cover)", artist: "Ай-Кыс Кыргыс", note: "потому что весна напоминает о тебе ❣️" },
+  { num: "03", title: "Bellyache", artist: "Billie Eilish", note: "потому что ты любишь такие песни ❣️" },
+  { num: "04", title: "Ocean Eyes", artist: "Billie Eilish", note: "потому что ты смотришь на мир по-особенному ❣️" },
 ];
 
 const allPhotos = [
@@ -81,11 +88,12 @@ function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
     const update = () => setProgress((audio.currentTime / audio.duration) * 100 || 0);
+    const onEnded = () => setCurrentIndex((i) => (i + 1) % songs.length);
     audio.addEventListener("timeupdate", update);
-    audio.addEventListener("ended", handleNext);
+    audio.addEventListener("ended", onEnded);
     return () => {
       audio.removeEventListener("timeupdate", update);
-      audio.removeEventListener("ended", handleNext);
+      audio.removeEventListener("ended", onEnded);
     };
   }, [currentIndex]);
 
@@ -108,20 +116,14 @@ function MusicPlayer() {
     }
   };
 
-  const handleNext = () => {
-    setCurrentIndex((i) => (i + 1) % songs.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((i) => (i - 1 + songs.length) % songs.length);
-  };
+  const handleNext = () => setCurrentIndex((i) => (i + 1) % songs.length);
+  const handlePrev = () => setCurrentIndex((i) => (i - 1 + songs.length) % songs.length);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
     if (!audio) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
-    audio.currentTime = ratio * audio.duration;
+    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
   };
 
   const selectSong = (i: number) => {
@@ -144,7 +146,7 @@ function MusicPlayer() {
         </div>
 
         <div
-          className="w-full h-1.5 bg-[#e8d9d4] rounded-full mb-6 cursor-pointer relative"
+          className="w-full h-1.5 bg-[#e8d9d4] rounded-full mb-6 cursor-pointer"
           onClick={handleSeek}
         >
           <div
@@ -154,24 +156,14 @@ function MusicPlayer() {
         </div>
 
         <div className="flex justify-center gap-8 items-center">
-          <button
-            onClick={handlePrev}
-            className="text-2xl opacity-50 hover:opacity-80 transition"
-          >
-            ◂◂
-          </button>
+          <button onClick={handlePrev} className="text-2xl opacity-50 hover:opacity-80 transition">◂◂</button>
           <button
             onClick={togglePlay}
             className="w-14 h-14 rounded-full bg-[#b5907a] text-white flex items-center justify-center text-xl hover:bg-[#a07868] transition shadow-lg"
           >
             {isPlaying ? "▮▮" : "▶"}
           </button>
-          <button
-            onClick={handleNext}
-            className="text-2xl opacity-50 hover:opacity-80 transition"
-          >
-            ▸▸
-          </button>
+          <button onClick={handleNext} className="text-2xl opacity-50 hover:opacity-80 transition">▸▸</button>
         </div>
       </div>
 
@@ -181,18 +173,14 @@ function MusicPlayer() {
             key={i}
             onClick={() => selectSong(i)}
             className={`flex items-center justify-between rounded-2xl px-5 py-3 cursor-pointer transition duration-300 ${
-              i === currentIndex
-                ? "bg-[#b5907a]/20 border border-[#b5907a]/40"
-                : "hover:bg-white/50"
+              i === currentIndex ? "bg-[#b5907a]/20 border border-[#b5907a]/40" : "hover:bg-white/50"
             }`}
           >
             <div>
               <p className="text-sm opacity-40 mb-0.5">{String(i + 1).padStart(2, "0")}</p>
               <p className="text-base">{song.title} — {song.artist}</p>
             </div>
-            <div className="text-xl opacity-40">
-              {i === currentIndex && isPlaying ? "♪" : "♫"}
-            </div>
+            <div className="text-xl opacity-40">{i === currentIndex && isPlaying ? "♪" : "♫"}</div>
           </div>
         ))}
       </div>
@@ -207,7 +195,7 @@ function ScrollFade({ children, className = "" }: { children: React.ReactNode; c
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -227,7 +215,7 @@ export default function GiftWebsite() {
   return (
     <div className="min-h-screen overflow-x-hidden font-serif relative" style={{ background: "#f7f1ee", color: "#5f4b4b" }}>
 
-      {/* HERO */}
+      {/* 1. HERO */}
       <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #f9ede8 0%, #f0e4dc 50%, #ecddd4 100%)" }} />
         <div className="relative z-10 max-w-3xl">
@@ -247,14 +235,14 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* MUSIC PLAYER */}
+      {/* 2. MAIN MUSIC PLAYER */}
       <section className="py-28 px-6 max-w-5xl mx-auto">
         <ScrollFade>
           <MusicPlayer />
         </ScrollFade>
       </section>
 
-      {/* BIRTHDAY INTRO */}
+      {/* 3. BIRTHDAY INTRO */}
       <section className="py-36 px-6 relative overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
           <ScrollFade>
@@ -283,12 +271,12 @@ export default function GiftWebsite() {
               любимых людей
               и истории ❣️
             </p>
-            <div className="mt-10 text-lg opacity-50 italic">16.05.2026 ✨</div>
+            <div className="mt-10 text-lg opacity-50 italic">16.05.2004 ✨</div>
           </ScrollFade>
         </div>
       </section>
 
-      {/* ASSOCIATIONS */}
+      {/* 4. ASSOCIATIONS */}
       <section className="py-32 px-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <ScrollFade className="text-center mb-24">
@@ -328,7 +316,7 @@ export default function GiftWebsite() {
               },
             ].map((item) => (
               <ScrollFade key={item.num}>
-                <div className={`grid md:grid-cols-2 gap-14 items-center`}>
+                <div className="grid md:grid-cols-2 gap-14 items-center">
                   <div className={item.flip ? "order-2 md:order-1" : ""}>
                     <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">{item.num}</p>
                     <h3 className="text-5xl font-light mb-8">{item.title}</h3>
@@ -350,7 +338,7 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* PHOTO ARCHIVE */}
+      {/* 5. PHOTO ARCHIVE */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <ScrollFade>
@@ -379,7 +367,7 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* 10 THINGS */}
+      {/* 6. 10 THINGS */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <ScrollFade className="text-center mb-20">
@@ -406,9 +394,41 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* LETTERS */}
+      {/* 7. SONGS THAT REMIND US OF YOU */}
+      <section className="py-28 px-6">
+        <div className="max-w-5xl mx-auto">
+          <ScrollFade className="text-center mb-16">
+            <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">soundtrack</p>
+            <h2 className="text-5xl md:text-6xl font-light leading-tight">
+              songs that
+              <br />
+              remind us of you ❣️
+            </h2>
+          </ScrollFade>
+
+          <div className="bg-white/50 backdrop-blur-md rounded-[40px] p-10 shadow-xl border border-white/40">
+            <div className="space-y-4">
+              {associatedSongs.map((song) => (
+                <ScrollFade key={song.num}>
+                  <div className="flex items-center gap-6 rounded-3xl px-7 py-6 bg-[#fdf9f7] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
+                    <div className="text-2xl opacity-30 font-light min-w-[40px]">{song.num}</div>
+                    <div className="flex-1">
+                      <p className="text-xl font-light">{song.title}</p>
+                      <p className="text-sm opacity-50 mt-0.5">{song.artist}</p>
+                      <p className="text-sm opacity-60 mt-2 italic">{song.note}</p>
+                    </div>
+                    <div className="text-2xl opacity-30">♫</div>
+                  </div>
+                </ScrollFade>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. LETTERS */}
       <section className="py-32 px-6 relative">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <ScrollFade className="text-center mb-24">
             <p className="tracking-[0.3em] uppercase text-sm opacity-60 mb-5">the most important part</p>
             <h2 className="text-5xl md:text-6xl font-light leading-tight">
@@ -416,51 +436,35 @@ export default function GiftWebsite() {
             </h2>
           </ScrollFade>
 
-          <div className="space-y-40">
+          <div className="space-y-24">
             {people.map((person, index) => (
               <ScrollFade key={index}>
-                <div>
-                  {/* Scattered photos */}
-                  <div className="relative h-[420px] mb-16 hidden md:block">
-                    <div
-                      className="absolute top-0 left-[5%] w-56 h-72 bg-white p-3 shadow-2xl rounded-2xl overflow-hidden"
-                      style={{ transform: "rotate(-8deg)" }}
-                    >
-                      <img src={person.photos[0]} className="w-full h-full object-cover rounded-xl" alt="" />
-                    </div>
-                    <div
-                      className="absolute top-16 left-[36%] w-60 h-80 bg-white p-3 shadow-2xl rounded-2xl overflow-hidden z-10"
-                      style={{ transform: "rotate(4deg)" }}
-                    >
-                      <img src={person.photos[1]} className="w-full h-full object-cover rounded-xl" alt="" />
-                    </div>
-                    <div
-                      className="absolute top-6 right-[5%] w-56 h-72 bg-white p-3 shadow-2xl rounded-2xl overflow-hidden"
-                      style={{ transform: "rotate(10deg)" }}
-                    >
-                      <img src={person.photos[2]} className="w-full h-full object-cover rounded-xl" alt="" />
-                    </div>
-                  </div>
+                {/* Mobile: photo above letter. Desktop: photo + letter side by side */}
+                <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
-                  {/* Mobile photos */}
-                  <div className="flex gap-3 mb-8 md:hidden overflow-x-auto pb-2">
-                    {person.photos.map((photo, pi) => (
+                  {/* Photo */}
+                  <div className="relative w-full">
+                    <div className="absolute -inset-4 rounded-full" style={{ background: "rgba(255,255,255,0.15)", filter: "blur(30px)" }} />
+                    <div
+                      className="relative bg-white/80 backdrop-blur-md p-3 rounded-[30px] shadow-2xl"
+                      style={{ transform: index % 2 === 0 ? "rotate(-3deg)" : "rotate(3deg)" }}
+                    >
                       <img
-                        key={pi}
-                        src={photo}
-                        className="w-32 h-44 object-cover rounded-2xl flex-shrink-0 shadow-lg"
-                        alt=""
+                        src={person.photo}
+                        className="w-full h-[340px] md:h-[440px] object-cover rounded-[22px]"
+                        alt={person.name}
                       />
-                    ))}
+                    </div>
                   </div>
 
-                  {/* Letter card */}
-                  <div className="max-w-4xl mx-auto bg-white/65 backdrop-blur-md rounded-[45px] p-12 md:p-16 shadow-2xl border border-white/50">
+                  {/* Letter */}
+                  <div className="bg-white/65 backdrop-blur-md rounded-[40px] p-10 md:p-14 shadow-2xl border border-white/50 w-full">
                     <p className="uppercase tracking-[0.3em] text-sm opacity-50 mb-8">{person.name}</p>
                     <div className="leading-10 text-lg whitespace-pre-line opacity-90 font-light">
                       {person.letter}
                     </div>
                   </div>
+
                 </div>
               </ScrollFade>
             ))}
@@ -468,7 +472,7 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* FINAL */}
+      {/* 9. FINAL */}
       <section className="py-40 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.4))" }} />
         <ScrollFade className="relative z-10 max-w-4xl mx-auto">
