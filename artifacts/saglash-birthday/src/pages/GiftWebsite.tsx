@@ -17,37 +17,45 @@ import photo_cafe_night from "@assets/IMG_20260516_155656_084_1778917754241.jpg"
 import photo_dinner from "@assets/IMG_20260516_155736_871_1778917761646.jpg";
 import photo_winter from "@assets/IMG_20260516_155737_481_1778917767320.jpg";
 
-import music_demchik from "@assets/DEMChIK_-_Ынакшылым_оду_ошпес_(1)_1778917549594.mp3";
-import music_chassy from "@assets/Ай-Кыс_Кыргыс_-_Чассынамга_(cover)_1778919276111.mp3";
-import music_bellyache from "@assets/bellyache_-_Billie_Eilish_1778919285658.mp3";
+import photo_aidana from "@assets/IMG_20260516_183111_751_1778923880383.jpg";
+import photo_ayana from "@assets/IMG_20260516_183056_420_1778923885389.jpg";
+import photo_ayushi from "@assets/IMG_20260516_183107_563_1778923889250.jpg";
+import photo_aichyraa from "@assets/IMG_20260516_183055_688_1778923892107.jpg";
 
-const songs = [
-  { title: "Ынакшылым оду ошпес", artist: "DEMChIK", src: music_demchik },
-  { title: "Чассынамга (cover)", artist: "Ай-Кыс Кыргыс", src: music_chassy },
-  { title: "Bellyache", artist: "Billie Eilish", src: music_bellyache },
-];
+import music_demchik from "@assets/DEMChIK_-_Ынакшылым_оду_ошпес_(1)_1778917549594.mp3";
+import music_chassy from "@assets/Ай-Кыс_Кыргыс_-_Чассынамга_(cover)_1778923826803.mp3";
+import music_bellyache from "@assets/bellyache_-_Billie_Eilish_1778923831737.mp3";
+import music_ocean_eyes from "@assets/ocean_eyes_-_Billie_Eilish_1778923835749.mp3";
+import music_dushkan from "@assets/Сайдаш_Сержикпей_-_Душкан_кызым_1778923839950.mp3";
 
 const people = [
   {
     name: "От Айданы",
     letter: "Ваше письмо здесь ❣️",
-    photo: photo_cafe,
+    photo: photo_aidana,
   },
   {
     name: "От Аяны",
     letter: "Ваше письмо здесь ❣️",
-    photo: photo_night_group,
+    photo: photo_ayana,
   },
   {
     name: "От Аюши",
     letter: "Ваше письмо здесь ❣️",
-    photo: photo_korean_food,
+    photo: photo_ayushi,
   },
   {
     name: "От Ай-Чырыы",
     letter: "Ваше письмо здесь ❣️",
-    photo: photo_winter,
+    photo: photo_aichyraa,
   },
+];
+
+const associatedSongs = [
+  { num: "01", title: "Чассынамга (cover)", artist: "Ай-Кыс Кыргыс", note: "потому что весна напоминает о тебе ❣️", src: music_chassy },
+  { num: "02", title: "Bellyache", artist: "Billie Eilish", note: "потому что ты любишь такие песни ❣️", src: music_bellyache },
+  { num: "03", title: "Ocean Eyes", artist: "Billie Eilish", note: "потому что ты смотришь на мир по-особенному ❣️", src: music_ocean_eyes },
+  { num: "04", title: "Душкан кызым", artist: "Сайдаш Сержикпей", note: "потому что это звучит как тёплая любовь ❣️", src: music_dushkan },
 ];
 
 const loveList = [
@@ -63,61 +71,32 @@ const loveList = [
   "То, как ты делаешь жизнь теплее",
 ];
 
-const associatedSongs = [
-  { num: "01", title: "Ынакшылым оду ошпес", artist: "DEMChIK", note: "потому что это звучит как что-то вечное ❣️" },
-  { num: "02", title: "Чассынамга (cover)", artist: "Ай-Кыс Кыргыс", note: "потому что весна напоминает о тебе ❣️" },
-  { num: "03", title: "Bellyache", artist: "Billie Eilish", note: "потому что ты любишь такие песни ❣️" },
-  { num: "04", title: "Ocean Eyes", artist: "Billie Eilish", note: "потому что ты смотришь на мир по-особенному ❣️" },
-];
-
 const allPhotos = [
   photo_car_wind, photo_mountains_car, photo_horse, photo_cafe,
   photo_basketball, photo_korean_food, photo_camping, photo_night_group,
   photo_night_selfie, photo_cafe_night, photo_dinner, photo_winter,
 ];
 
+/* ─── Single-song scroll player ─── */
 function MusicPlayer() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  const currentSong = songs[currentIndex];
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
     const update = () => setProgress((audio.currentTime / audio.duration) * 100 || 0);
-    const onEnded = () => setCurrentIndex((i) => (i + 1) % songs.length);
     audio.addEventListener("timeupdate", update);
-    audio.addEventListener("ended", onEnded);
-    return () => {
-      audio.removeEventListener("timeupdate", update);
-      audio.removeEventListener("ended", onEnded);
-    };
-  }, [currentIndex]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.src = currentSong.src;
-    if (isPlaying) audio.play().catch(() => {});
-  }, [currentIndex]);
+    return () => audio.removeEventListener("timeupdate", update);
+  }, []);
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-    } else {
-      audio.play().catch(() => {});
-      setIsPlaying(true);
-    }
+    if (isPlaying) { audio.pause(); setIsPlaying(false); }
+    else { audio.play().catch(() => {}); setIsPlaying(true); }
   };
-
-  const handleNext = () => setCurrentIndex((i) => (i + 1) % songs.length);
-  const handlePrev = () => setCurrentIndex((i) => (i - 1 + songs.length) % songs.length);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     const audio = audioRef.current;
@@ -126,23 +105,17 @@ function MusicPlayer() {
     audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
   };
 
-  const selectSong = (i: number) => {
-    setCurrentIndex(i);
-    setIsPlaying(true);
-    setTimeout(() => audioRef.current?.play().catch(() => {}), 50);
-  };
-
   return (
     <div className="bg-white/60 backdrop-blur-md rounded-[40px] p-10 shadow-xl border border-white/40">
-      <audio ref={audioRef} />
+      <audio ref={audioRef} src={music_demchik} />
 
       <h2 className="text-4xl mb-3 text-center font-light">music while scrolling</h2>
       <p className="text-center mb-8 opacity-60 text-sm tracking-wide">Включай музыку и листай дальше ❣️</p>
 
       <div className="bg-[#fdf9f7] rounded-3xl p-8 border border-[#e8d9d4]">
         <div className="text-center mb-6">
-          <p className="text-lg font-light">{currentSong.title}</p>
-          <p className="text-sm opacity-50 mt-1">{currentSong.artist}</p>
+          <p className="text-lg font-light">Ынакшылым оду ошпес</p>
+          <p className="text-sm opacity-50 mt-1">DEMChIK</p>
         </div>
 
         <div
@@ -155,39 +128,91 @@ function MusicPlayer() {
           />
         </div>
 
-        <div className="flex justify-center gap-8 items-center">
-          <button onClick={handlePrev} className="text-2xl opacity-50 hover:opacity-80 transition">◂◂</button>
+        <div className="flex justify-center">
           <button
             onClick={togglePlay}
             className="w-14 h-14 rounded-full bg-[#b5907a] text-white flex items-center justify-center text-xl hover:bg-[#a07868] transition shadow-lg"
           >
             {isPlaying ? "▮▮" : "▶"}
           </button>
-          <button onClick={handleNext} className="text-2xl opacity-50 hover:opacity-80 transition">▸▸</button>
         </div>
       </div>
 
-      <div className="mt-6 space-y-2">
-        {songs.map((song, i) => (
+      <p className="text-center mt-6 text-sm opacity-40 italic">Любим ❣️</p>
+    </div>
+  );
+}
+
+/* ─── Individual playable song card ─── */
+function SongCard({ song, num }: { song: typeof associatedSongs[0]; num: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const update = () => setProgress((audio.currentTime / audio.duration) * 100 || 0);
+    const onEnded = () => { setIsPlaying(false); setProgress(0); };
+    audio.addEventListener("timeupdate", update);
+    audio.addEventListener("ended", onEnded);
+    return () => {
+      audio.removeEventListener("timeupdate", update);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, []);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (isPlaying) { audio.pause(); setIsPlaying(false); }
+    else { audio.play().catch(() => {}); setIsPlaying(true); }
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+  };
+
+  return (
+    <div className="rounded-[28px] bg-[#fdf9f7] border border-[#eaded8] p-6 shadow-lg hover:shadow-xl transition duration-500">
+      <audio ref={audioRef} src={song.src} />
+
+      <div className="flex items-start gap-5">
+        <div className="text-2xl opacity-30 font-light pt-0.5 min-w-[36px]">{num}</div>
+
+        <div className="flex-1 min-w-0">
+          <p className="text-xl font-light truncate">{song.title}</p>
+          <p className="text-sm opacity-50 mt-0.5">{song.artist}</p>
+          <p className="text-sm opacity-60 mt-2 italic">{song.note}</p>
+
+          {/* Progress bar */}
           <div
-            key={i}
-            onClick={() => selectSong(i)}
-            className={`flex items-center justify-between rounded-2xl px-5 py-3 cursor-pointer transition duration-300 ${
-              i === currentIndex ? "bg-[#b5907a]/20 border border-[#b5907a]/40" : "hover:bg-white/50"
-            }`}
+            className="w-full h-1 bg-[#e8d9d4] rounded-full mt-4 cursor-pointer"
+            onClick={handleSeek}
           >
-            <div>
-              <p className="text-sm opacity-40 mb-0.5">{String(i + 1).padStart(2, "0")}</p>
-              <p className="text-base">{song.title} — {song.artist}</p>
-            </div>
-            <div className="text-xl opacity-40">{i === currentIndex && isPlaying ? "♪" : "♫"}</div>
+            <div
+              className="h-full bg-[#b5907a] rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
           </div>
-        ))}
+        </div>
+
+        {/* Play / pause button */}
+        <button
+          onClick={togglePlay}
+          className="w-11 h-11 rounded-full bg-[#b5907a] text-white flex items-center justify-center text-base hover:bg-[#a07868] transition shadow-md flex-shrink-0 mt-1"
+        >
+          {isPlaying ? "▮▮" : "▶"}
+        </button>
       </div>
     </div>
   );
 }
 
+/* ─── Scroll fade wrapper ─── */
 function ScrollFade({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -235,7 +260,7 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* 2. MAIN MUSIC PLAYER */}
+      {/* 2. MAIN MUSIC PLAYER — DEMChIK only */}
       <section className="py-28 px-6 max-w-5xl mx-auto">
         <ScrollFade>
           <MusicPlayer />
@@ -290,30 +315,9 @@ export default function GiftWebsite() {
 
           <div className="space-y-32">
             {[
-              {
-                num: "01",
-                title: "ночной город",
-                text: "потому что рядом с тобой даже обычные вечера ощущаются как сцены из фильма ❣️",
-                photo: photo_night_city,
-                rotate: "-4deg",
-                flip: false,
-              },
-              {
-                num: "02",
-                title: "закаты",
-                text: "потому что в тебе есть что-то очень тёплое, спокойное и красивое ❣️",
-                photo: photo_sunset_car,
-                rotate: "4deg",
-                flip: true,
-              },
-              {
-                num: "03",
-                title: "море",
-                text: "потому что с тобой одновременно спокойно и очень живо ❣️",
-                photo: photo_beach,
-                rotate: "-3deg",
-                flip: false,
-              },
+              { num: "01", title: "ночной город", text: "потому что рядом с тобой даже обычные вечера ощущаются как сцены из фильма ❣️", photo: photo_night_city, rotate: "-4deg", flip: false },
+              { num: "02", title: "закаты", text: "потому что в тебе есть что-то очень тёплое, спокойное и красивое ❣️", photo: photo_sunset_car, rotate: "4deg", flip: true },
+              { num: "03", title: "море", text: "потому что с тобой одновременно спокойно и очень живо ❣️", photo: photo_beach, rotate: "-3deg", flip: false },
             ].map((item) => (
               <ScrollFade key={item.num}>
                 <div className="grid md:grid-cols-2 gap-14 items-center">
@@ -324,10 +328,7 @@ export default function GiftWebsite() {
                   </div>
                   <div className={`relative ${item.flip ? "order-1 md:order-2" : ""}`}>
                     <div className="absolute -inset-6 rounded-full" style={{ background: "rgba(255,255,255,0.1)", filter: "blur(40px)" }} />
-                    <div
-                      className="relative bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl"
-                      style={{ transform: `rotate(${item.rotate})` }}
-                    >
+                    <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl" style={{ transform: `rotate(${item.rotate})` }}>
                       <img src={item.photo} className="w-full h-[450px] object-cover rounded-[25px]" alt={item.title} />
                     </div>
                   </div>
@@ -342,26 +343,15 @@ export default function GiftWebsite() {
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto">
           <ScrollFade>
-            <div className="bg-white/40 backdrop-blur-xl rounded-[50px] p-12 md:p-16 shadow-2xl border border-white/30 text-center relative overflow-hidden">
+            <div className="bg-white/40 backdrop-blur-xl rounded-[50px] p-12 md:p-16 shadow-2xl border border-white/30 text-center">
               <p className="tracking-[0.35em] uppercase text-sm opacity-50 mb-5">hidden memories</p>
-              <h2 className="text-5xl md:text-6xl font-light mb-16 leading-tight">
-                photo archive ❣️
-              </h2>
-
+              <h2 className="text-5xl md:text-6xl font-light mb-16 leading-tight">photo archive ❣️</h2>
               <div className="columns-2 md:columns-4 gap-4 space-y-4">
                 {allPhotos.map((photo, i) => (
-                  <img
-                    key={i}
-                    src={photo}
-                    className="rounded-[20px] shadow-xl hover:scale-[1.03] transition duration-500 w-full break-inside-avoid"
-                    alt={`memory ${i + 1}`}
-                  />
+                  <img key={i} src={photo} className="rounded-[20px] shadow-xl hover:scale-[1.03] transition duration-500 w-full break-inside-avoid" alt={`memory ${i + 1}`} />
                 ))}
               </div>
-
-              <p className="mt-14 text-sm opacity-40 tracking-wide">
-                a collection of moments we never want to forget ❣️
-              </p>
+              <p className="mt-14 text-sm opacity-40 tracking-wide">a collection of moments we never want to forget ❣️</p>
             </div>
           </ScrollFade>
         </div>
@@ -378,14 +368,11 @@ export default function GiftWebsite() {
               we love about you ❣️
             </h2>
           </ScrollFade>
-
           <div className="grid md:grid-cols-2 gap-6">
             {loveList.map((item, index) => (
               <ScrollFade key={index}>
                 <div className="bg-white/60 backdrop-blur-md rounded-[30px] p-8 shadow-lg border border-white/40 flex gap-6 items-center hover:scale-[1.02] transition duration-500">
-                  <div className="text-4xl opacity-30 font-light min-w-[50px]">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
+                  <div className="text-4xl opacity-30 font-light min-w-[50px]">{String(index + 1).padStart(2, "0")}</div>
                   <p className="text-xl">{item}</p>
                 </div>
               </ScrollFade>
@@ -394,7 +381,7 @@ export default function GiftWebsite() {
         </div>
       </section>
 
-      {/* 7. SONGS THAT REMIND US OF YOU */}
+      {/* 7. SONGS THAT FEEL LIKE YOU — real playable cards */}
       <section className="py-28 px-6">
         <div className="max-w-5xl mx-auto">
           <ScrollFade className="text-center mb-16">
@@ -402,23 +389,15 @@ export default function GiftWebsite() {
             <h2 className="text-5xl md:text-6xl font-light leading-tight">
               songs that
               <br />
-              remind us of you ❣️
+              feel like you ❣️
             </h2>
           </ScrollFade>
 
           <div className="bg-white/50 backdrop-blur-md rounded-[40px] p-10 shadow-xl border border-white/40">
-            <div className="space-y-4">
+            <div className="space-y-5">
               {associatedSongs.map((song) => (
                 <ScrollFade key={song.num}>
-                  <div className="flex items-center gap-6 rounded-3xl px-7 py-6 bg-[#fdf9f7] border border-[#eaded8] hover:scale-[1.01] transition duration-500">
-                    <div className="text-2xl opacity-30 font-light min-w-[40px]">{song.num}</div>
-                    <div className="flex-1">
-                      <p className="text-xl font-light">{song.title}</p>
-                      <p className="text-sm opacity-50 mt-0.5">{song.artist}</p>
-                      <p className="text-sm opacity-60 mt-2 italic">{song.note}</p>
-                    </div>
-                    <div className="text-2xl opacity-30">♫</div>
-                  </div>
+                  <SongCard song={song} num={song.num} />
                 </ScrollFade>
               ))}
             </div>
@@ -431,15 +410,13 @@ export default function GiftWebsite() {
         <div className="max-w-5xl mx-auto">
           <ScrollFade className="text-center mb-24">
             <p className="tracking-[0.3em] uppercase text-sm opacity-60 mb-5">the most important part</p>
-            <h2 className="text-5xl md:text-6xl font-light leading-tight">
-              letters for you ❣️
-            </h2>
+            <h2 className="text-5xl md:text-6xl font-light leading-tight">letters for you ❣️</h2>
           </ScrollFade>
 
           <div className="space-y-24">
             {people.map((person, index) => (
               <ScrollFade key={index}>
-                {/* Mobile: photo above letter. Desktop: photo + letter side by side */}
+                {/* Mobile: flex-col → photo above letter. Desktop: grid 2 cols */}
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-start">
 
                   {/* Photo */}
@@ -482,7 +459,6 @@ export default function GiftWebsite() {
             <br />
             for existing
           </h2>
-
           <p className="text-xl leading-10 opacity-80 mb-16">
             Спасибо тебе за твоё тепло,
             поддержку,
@@ -495,13 +471,11 @@ export default function GiftWebsite() {
             ещё огромное количество
             воспоминаний вместе.
           </p>
-
           <div className="space-y-5 text-lg opacity-70">
             <p>пусть ты всегда будешь счастлива ❣️</p>
             <p>пусть рядом всегда будут люди, рядом с которыми спокойно</p>
             <p>пусть жизнь будет красивой, тёплой и наполненной любовью</p>
           </div>
-
           <div className="mt-24 text-3xl md:text-5xl tracking-wide font-light" style={{ color: "#b5907a" }}>
             ЫНАК БИС ❣️
           </div>
