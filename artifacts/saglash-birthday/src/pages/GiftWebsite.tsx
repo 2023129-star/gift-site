@@ -31,12 +31,37 @@ import music_dushkan from "@assets/Сайдаш_Сержикпей_-_Душка�
 const people = [
   {
     name: "От Айданы",
-    letter: "Ваше письмо здесь ❣️",
+    letter: `С твоим прекрасным днем, дорогая Саглашка 🐣
+Пусть в твоей жизни всегда будет больше радости чем грусти ✨
+Пусть люди рядом будут настоящими. Эмоции искренними. Фотографии живыми. А глаза всегда горят от счастья, идей и любви к жизни ❣️
+
+Ты заслуживаешь не "нормально", не "как у всех", а чего-то большого, красивого и настоящего 💋 Пусть этот год станет именно таким: с неожиданными встречами, исполнением желаний и моментами, когда ты вдруг понимаешь, что «вот оно, счастье».
+
+Помни: люби, цени, оберегай себя больше всех на свете! Ты — самое главное, что есть у себя! 🤍
+
+Я очень рада, что познакомилась с тобой!
+Люблюю, сактыырю, куспактаарю 💋
+
+Happy Birthday ❣️`,
     photo: photo_aidana,
   },
   {
     name: "От Аяны",
-    letter: "Ваше письмо здесь ❣️",
+    letter: `Саглаааш ♡
+
+С твоим чудесным днём, дорогаяяя ♡ Желаю тебе много-много греющих душу воспоминаний, цветов, незабываемых путешествий!
+
+Ты замечательный человек! Столько в тебе доброты, мягкости, понимания, в то же время стойкости, спокойствия и мудрости ♡
+
+Спасибо, что всегда поддерживаешь! Часто в сложных ситуациях думаю "как бы повела себя Саглаш? что бы она посоветовала?" Реально, рядом с тобой все переживания, страхи, неуверенность куда-то испаряются.
+
+Не забывай также о себе, ведь ты заслуживаешь действительно большего, лучшего!!!
+
+В первую очередь уважаю ♡ люблю ♡ и прооосто обожаю тебя всем сердцем!
+
+Ццц
+
+Роскошь, просто р-о-с-к-о-ш-ь, что ты есть у меня! ♡`,
     photo: photo_ayana,
   },
   {
@@ -303,8 +328,8 @@ export default function GiftWebsite() {
 
       {/* 4. ASSOCIATIONS */}
       <section className="py-32 px-6 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto">
-          <ScrollFade className="text-center mb-24">
+        <div className="max-w-5xl mx-auto">
+          <ScrollFade className="text-center mb-20">
             <p className="tracking-[0.4em] uppercase text-sm opacity-50 mb-6">associations</p>
             <h2 className="text-5xl md:text-7xl font-light leading-tight">
               things that
@@ -313,24 +338,29 @@ export default function GiftWebsite() {
             </h2>
           </ScrollFade>
 
-          <div className="space-y-32">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: "01", title: "ночной город", text: "потому что рядом с тобой даже обычные вечера ощущаются как сцены из фильма ❣️", photo: photo_night_city, rotate: "-4deg", flip: false },
-              { num: "02", title: "закаты", text: "потому что в тебе есть что-то очень тёплое, спокойное и красивое ❣️", photo: photo_sunset_car, rotate: "4deg", flip: true },
-              { num: "03", title: "море", text: "потому что с тобой одновременно спокойно и очень живо ❣️", photo: photo_beach, rotate: "-3deg", flip: false },
+              { num: "01", title: "ночной город", text: "потому что рядом с тобой даже обычные вечера ощущаются как сцены из фильма ❣️", photo: photo_night_city, rotate: "-2deg" },
+              { num: "02", title: "закаты", text: "потому что в тебе есть что-то очень тёплое, спокойное и красивое ❣️", photo: photo_sunset_car, rotate: "1.5deg" },
+              { num: "03", title: "море", text: "потому что с тобой одновременно спокойно и очень живо ❣️", photo: photo_beach, rotate: "-1.5deg" },
             ].map((item) => (
               <ScrollFade key={item.num}>
-                <div className="grid md:grid-cols-2 gap-14 items-center">
-                  <div className={item.flip ? "order-2 md:order-1" : ""}>
-                    <p className="tracking-[0.3em] uppercase text-sm opacity-50 mb-5">{item.num}</p>
-                    <h3 className="text-5xl font-light mb-8">{item.title}</h3>
-                    <p className="text-lg leading-10 opacity-75 font-light">{item.text}</p>
+                <div
+                  className="bg-white/65 backdrop-blur-md rounded-[32px] overflow-hidden shadow-xl border border-white/50 hover:scale-[1.02] transition duration-500"
+                  style={{ transform: `rotate(${item.rotate})` }}
+                >
+                  <div className="relative">
+                    <img
+                      src={item.photo}
+                      className="w-full h-[320px] object-cover"
+                      alt={item.title}
+                    />
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(255,245,240,0.6))" }} />
                   </div>
-                  <div className={`relative ${item.flip ? "order-1 md:order-2" : ""}`}>
-                    <div className="absolute -inset-6 rounded-full" style={{ background: "rgba(255,255,255,0.1)", filter: "blur(40px)" }} />
-                    <div className="relative bg-white/70 backdrop-blur-md p-4 rounded-[35px] shadow-2xl" style={{ transform: `rotate(${item.rotate})` }}>
-                      <img src={item.photo} className="w-full h-[450px] object-cover rounded-[25px]" alt={item.title} />
-                    </div>
+                  <div className="px-8 py-7">
+                    <p className="text-xs tracking-[0.3em] uppercase opacity-40 mb-3">{item.num}</p>
+                    <h3 className="text-2xl font-light mb-4" style={{ color: "#5f4b4b" }}>{item.title}</h3>
+                    <p className="text-sm leading-7 opacity-65 font-light">{item.text}</p>
                   </div>
                 </div>
               </ScrollFade>

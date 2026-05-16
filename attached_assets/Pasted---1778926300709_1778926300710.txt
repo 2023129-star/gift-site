@@ -1,0 +1,85 @@
+
+Напиши мне команду  на англ чтобы сайт который делает мне вебсайт переделал эту часть 
+пусть добавит письма Айданы и Аяны. Айдана: С твоим прекрасным днем, дорогая Саглашка🐣
+Пусть в твоей жизни всегда будет больше радости чем грусти✨
+Пусть люди рядом будут настоящими. Эмоции искренними Фотографии живыми А глаза всегда горят от счастья, идей и любви к жизни❣️
+Ты заслуживаешь не “нормально”, не “как у всех”, а чего-то большого, красивого и настоящего💋 Пусть этот год станет именно таким: с неожиданными встречами, исполнением желаний и моментами, когда ты вдруг понимаешь, что «вот оно, счастье».
+Помни: люби, цени, оберегай себя больше всех на свете! Ты-самое главное, что есть у себя! 🤍
+Я очень рада, что познакомилась с тобой!
+Люблюю, сактыырю, куспактаарю💋 
+Happy Birthday❣️ кстати письма на русском также оставить 
+И аяны: Саглаааш♡,
+С твоим чудесным днём, дорогаяяя♡ желаю тебе много-много греющих душу воспоминаний, цветов, незабываемых путешествий!
+Ты замечательный человек! Столько в тебе доброты, мягкости, понимания, в то же время стойкости, спокойствия и мудрости♡
+спасибо, что всегда поддерживаешь!  Часто в сложных ситуациях думаю "как бы повела себя Саглаш? что бы она посоветовала?"  Реально, рядом с тобой все переживания, страхи, неуверенность куда-то испаряются. 
+Не забывай также о себе, ведь ты заслуживаешь действительно большего, лучшего!!! 
+В первую очередь уважаю♡люблю♡ и прооосто обожаю тебя всем сердцем! 
+Ццц
+Роскошь, просто р-о-с-к-о-ш-ь, что ты есть у меня! ♡
+
+Here’s a clear English command you can paste into your website builder:
+
+Please update the “letters” section of the website.
+
+Add two separate letters and make sure they are displayed as full readable messages in Russian (do not translate them).
+
+Letter from Aidana:
+
+С твоим прекрасным днем, дорогая Саглашка🐣
+Пусть в твоей жизни всегда будет больше радости чем грусти✨
+Пусть люди рядом будут настоящими. Эмоции искренними Фотографии живыми А глаза всегда горят от счастья, идей и любви к жизни❣️
+Ты заслуживаешь не “нормально”, не “как у всех”, а чего-то большого, красивого и настоящего💋 Пусть этот год станет именно таким: с неожиданными встречами, исполнением желаний и моментами, когда ты вдруг понимаешь, что «вот оно, счастье».
+Помни: люби, цени, оберегай себя больше всех на свете! Ты-самое главное, что есть у себя! 🤍
+Я очень рада, что познакомилась с тобой!
+Люблюю, сактыырю, куспактаарю💋
+Happy Birthday❣️
+
+Letter from Ayana:
+
+Саглаааш♡,
+С твоим чудесным днём, дорогаяяя♡ желаю тебе много-много греющих душу воспоминаний, цветов, незабываемых путешествий!
+Ты замечательный человек! Столько в тебе доброты, мягкости, понимания, в то же время стойкости, спокойствия и мудрости♡
+спасибо, что всегда поддерживаешь! Часто в сложных ситуациях думаю "как бы повела себя Саглаш? что бы она посоветовала?" Реально, рядом с тобой все переживания, страхи, неуверенность куда-то испаряются.
+Не забывай также о себе, ведь ты заслуживаешь действительно большего, лучшего!!!
+В первую очередь уважаю♡люблю♡ и прооосто обожаю тебя всем сердцем!
+Ццц
+Роскошь, просто р-о-с-к-о-ш-ь, что ты есть у меня! ♡
+
+Make sure:
+
+Both letters are visually separated (two blocks or cards)
+
+Keep original Russian text exactly as written
+
+Preserve emojis and formatting (line breaks)
+
+Title them: “Letter from Aidana” and “Letter from Ayana”
+
+Do not change meaning or rewrite content
+
+
+Также напиши чтобы часть с ассоциациями фотки и описание были вместе как красивая карточка
+
+Here’s the additional command you can paste:
+
+Please also update the “associations” section.
+
+Each item (photo + description) must be combined into a single beautiful card.
+
+Requirements:
+
+Each association should be displayed as one unified card (not separate image and text blocks)
+
+The photo must appear at the top of the card
+
+The description must appear directly under the photo
+
+The design should look clean, aesthetic, and balanced (like a modern memory card)
+
+Add spacing, rounded corners, and soft styling to make each card visually appealing
+
+All cards should be aligned consistently in a grid or vertical stack depending on layout
+
+Make sure images and text belong together and are not separated into different sections
+
+Goal: each association = one visually complete card with image + description as a single unit.
